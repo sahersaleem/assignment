@@ -1,5 +1,6 @@
 "use client";
 
+import CountryCard from "@/components/CountryCard";
 import Link from "next/link";
 
 interface ICountry {
@@ -48,7 +49,7 @@ const countries = [
   },
 ];
 
-const page = ({ params }:{params:any}) => {
+const page = ({ params }: { params: any }) => {
   const findCountries = countries.find(
     (country: ICountry) => country.name === params.countryname
   );
@@ -58,23 +59,31 @@ const page = ({ params }:{params:any}) => {
   return (
     <div className=" w-full h-screen flex justify-center items-center bg-white text-black">
       {findCountries && (
-        <div>
-          <h1 className="text-5xl font-bold">{findCountries.name}</h1>
-          <h2 className="text-2xl">Capital:{findCountries.capital}</h2>
-          <h2 className="text-2xl">population:{findCountries.population}</h2>
-          <h2 className="text-2xl">
-            Languages:
-            {findCountries.languages.map((language, index) => (
-              <ul key={index}>
-                <li className="text-lg">{language}</li>
-              </ul>
-            ))}
-          </h2>
+        // <div>
+        //   <h1 className="text-5xl font-bold">{findCountries.name}</h1>
+        //   <h2 className="text-2xl">Capital:{findCountries.capital}</h2>
+        //   <h2 className="text-2xl">population:{findCountries.population}</h2>
+        //   <h2 className="text-2xl">
+        //     Languages:
+        //     {findCountries.languages.map((language, index) => (
+        //       <ul key={index}>
+        //         <li className="text-lg">{language}</li>
+        //       </ul>
+        //     ))}
+        //   </h2>
 
-          <button className="bg-blue-800 px-3 py-2 text-white rounded-lg">
-            <Link href={"/country"}>Back</Link>
-          </button>
-        </div>
+        //   <button className="bg-blue-800 px-3 py-2 text-white rounded-lg">
+        //     <Link href={"/country"}>Back</Link>
+        //   </button>
+        // </div>
+
+        // Task no 2
+        <CountryCard
+          countryName={findCountries.name}
+          capital={findCountries.capital}
+          languages={findCountries.languages}
+          population={findCountries.population}
+        />
       )}
     </div>
   );
