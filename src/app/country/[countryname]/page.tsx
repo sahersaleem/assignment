@@ -1,7 +1,7 @@
 "use client";
 
 import CountryCard from "@/components/CountryCard";
-import Link from "next/link";
+// import Link from "next/link";
 
 interface ICountry {
   name: string;
